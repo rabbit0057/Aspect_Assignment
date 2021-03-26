@@ -170,6 +170,7 @@ class APIDemo(object):
         print("email_id:",email_id)
         print("password:",password)
         print("registration_status is:",resp.ok)
+        assert resp.status_code == 200 , "User registeration failed "
 
 
        
