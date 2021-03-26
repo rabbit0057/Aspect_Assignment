@@ -19,5 +19,8 @@ class TestAPI(unittest.TestCase):
     def test_user_with_valid_reg(self):
         APIDemo.register_user(self,"eve.holt@reqres.in","pistol")
     
+    def test_user_with_invalid_reg(self):
+        APIDemo.register_user(self,"rabbit0057@gmail.com","test")
+    
 if __name__ == "__main__":
     unittest.main()

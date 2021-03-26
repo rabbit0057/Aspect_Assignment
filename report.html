@@ -429,7 +429,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 26-Mar-2021 at 13:29:03 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 26-Mar-2021 at 15:55:36 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -445,8 +445,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.7.4</td></tr></table>
     <h2>Summary</h2>
-    <p>5 tests ran in 1.86 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">5 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>6 tests ran in 2.34 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">5 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -457,17 +457,32 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test.py::TestAPI::test_user_with_invalid_reg</td>
+          <td class="col-duration">0.20</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.TestAPI testMethod=test_user_with_invalid_reg&gt;<br/><br/>    def test_user_with_invalid_reg(self):<br/>&gt;       APIDemo.register_user(self,&quot;rabbit0057@gmail.com&quot;,&quot;test&quot;)<br/><br/>test.py:23: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;test.TestAPI testMethod=test_user_with_invalid_reg&gt;, email_id = &#x27;rabbit0057@gmail.com&#x27;, password = &#x27;test&#x27;<br/><br/>    def register_user(self, email_id, password):<br/>        &quot;&quot;&quot;<br/>        Action : register the user&#x27;s specific definition from given parameters.Overwrite values of instance data members.<br/>    <br/>        Important note on overwriting instance data attributes:<br/>        response_code : an integer type<br/>        result_structure : a dictionary type<br/>        response_content_type : a string type<br/>    <br/>        Parameters and Return values<br/>        :param email_id: email_id of user<br/>        :param password: password for the user<br/>        :return:  In case of successful user registration , it should be True else False<br/>        &quot;&quot;&quot;<br/>    <br/>        payload = {<br/>            &quot;email&quot;:email_id,<br/>            &quot;password&quot;:password<br/>        }<br/>        url = &quot;https://reqres.in/api/register&quot;<br/>        resp = requests.post(url,data=payload)<br/>        print(&quot;response_code:&quot;,resp.status_code)<br/>        print(&quot;result_structure:&quot;,resp.json())<br/>        print(&quot;response_content_type:&quot;,resp.text)<br/>        print(&quot;email_id:&quot;,email_id)<br/>        print(&quot;password:&quot;,password)<br/>        print(&quot;registration_status is:&quot;,resp.ok)<br/>&gt;       assert resp.status_code == 200 , &quot;User registeration failed &quot;<br/><span class="error">E       AssertionError: User registeration failed</span><br/><br/>APIDemo.py:173: AssertionError<br/> ------------------------------Captured stdout call------------------------------ <br/>response_code: 400
+result_structure: {&#x27;error&#x27;: &#x27;Note: Only defined users succeed registration&#x27;}
+response_content_type: {&quot;error&quot;:&quot;Note: Only defined users succeed registration&quot;}
+email_id: rabbit0057@gmail.com
+password: test
+registration_status is: False
+<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test.py::TestAPI::test_create_user_with_valid</td>
-          <td class="col-duration">0.41</td>
+          <td class="col-duration">0.44</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>response_code: 201
-result_structure: {&#x27;name&#x27;: &#x27;rabbit&#x27;, &#x27;job&#x27;: &#x27;lead&#x27;, &#x27;id&#x27;: &#x27;981&#x27;, &#x27;createdAt&#x27;: &#x27;2021-03-26T07:59:02.371Z&#x27;}
-createdAt: Fri, 26 Mar 2021 07:59:02
+result_structure: {&#x27;name&#x27;: &#x27;rabbit&#x27;, &#x27;job&#x27;: &#x27;lead&#x27;, &#x27;id&#x27;: &#x27;274&#x27;, &#x27;createdAt&#x27;: &#x27;2021-03-26T10:25:35.053Z&#x27;}
+createdAt: Fri, 26 Mar 2021 10:25:35
 server_url: https://reqres.in/api/users
 user_name: rabbit
 job: lead
@@ -477,7 +492,7 @@ create_user_status is: True
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test.py::TestAPI::test_delete_user_with_vaild</td>
-          <td class="col-duration">0.38</td>
+          <td class="col-duration">0.37</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -490,13 +505,13 @@ delete_user_status is: True
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test.py::TestAPI::test_get_users_with_data_updated</td>
-          <td class="col-duration">0.45</td>
+          <td class="col-duration">0.43</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>response_code: 200
-result_structure: {&#x27;name&#x27;: &#x27;API&#x27;, &#x27;job&#x27;: &#x27;API testing&#x27;, &#x27;updatedAt&#x27;: &#x27;2021-03-26T07:59:03.191Z&#x27;}
-response_content_type: {&quot;name&quot;:&quot;API&quot;,&quot;job&quot;:&quot;API testing&quot;,&quot;updatedAt&quot;:&quot;2021-03-26T07:59:03.191Z&quot;}
+result_structure: {&#x27;name&#x27;: &#x27;API&#x27;, &#x27;job&#x27;: &#x27;API testing&#x27;, &#x27;updatedAt&#x27;: &#x27;2021-03-26T10:25:35.863Z&#x27;}
+response_content_type: {&quot;name&quot;:&quot;API&quot;,&quot;job&quot;:&quot;API testing&quot;,&quot;updatedAt&quot;:&quot;2021-03-26T10:25:35.863Z&quot;}
 user_id: Janet
 job: zion resident
 update_user_status is: True
@@ -505,7 +520,7 @@ update_user_status is: True
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test.py::TestAPI::test_get_users_with_valid</td>
-          <td class="col-duration">0.06</td>
+          <td class="col-duration">0.11</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -520,7 +535,7 @@ get_user_status is: True
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test.py::TestAPI::test_user_with_valid_reg</td>
-          <td class="col-duration">0.37</td>
+          <td class="col-duration">0.42</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
